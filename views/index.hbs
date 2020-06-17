@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+
+<form action="/" method="GET">
+    <input name="city" placeholder="Enter a city name" required>
+    <input type="submit" value="Get Forecast">
+</form>
+
+{{#if forecast}}
+<h3>Current Temperature</h3>
+<ul class="current-temp-list">
+    <li>Temperature: {{forecast.temp}}</li>
+    <li>Description: {{forecast.weather.0.description}}</li>
+</ul>
+{{/if}}
+
+{{#if hourly}}
+<h3>Hourly Temperature</h3>
+    {{#each hourly}}
+        <ul>
+            <li>Time: {{this.hour}}</li>
+            <li>Temperature: {{this.temp}} C</li>
+            <li>Description: {{this.weather.0.description}}</li>
+        </ul>
+    {{/each}}
+{{/if}}
